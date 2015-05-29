@@ -1,0 +1,19 @@
+{
+  "version": "0.0.0",
+  "name": "ZapCart",
+  "private": true,
+  "devDependencies": {
+    "gulp": "3.8.11",
+    "gulp-util": "3.0.4",
+    "gulp-browserify": "0.5.1",
+    "gulp-concat": "2.5.2",
+    "gulp-livereload": "3.8.0",
+    "gulp-jshint": "1.11.0",
+    "gulp-rimraf": "0.1.1",
+    "gulp-less": "3.0.3",
+    "gulp-autoprefixer": "2.3.0",
+    "angular": "1.4.0",
+    "browserify": "10.2.1",
+    "connect-livereload": "0.5.3"
+  }
+}

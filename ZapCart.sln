@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{49BC0FD8-CFA9-4481-8F5C-26113BF16542}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79F031FB-38FC-448B-8C3C-00074F7020B9}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ZapCart", "src\ZapCart\ZapCart.xproj", "{C66990FD-C27A-4DA7-A5B4-5A28C232E7D1}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ZapCart.WebApi", "src\ZapCart.WebApi\ZapCart.WebApi.xproj", "{4BFF0638-66E4-4F57-B76C-4D10BCE5FD43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C66990FD-C27A-4DA7-A5B4-5A28C232E7D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C66990FD-C27A-4DA7-A5B4-5A28C232E7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C66990FD-C27A-4DA7-A5B4-5A28C232E7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C66990FD-C27A-4DA7-A5B4-5A28C232E7D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFF0638-66E4-4F57-B76C-4D10BCE5FD43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFF0638-66E4-4F57-B76C-4D10BCE5FD43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFF0638-66E4-4F57-B76C-4D10BCE5FD43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFF0638-66E4-4F57-B76C-4D10BCE5FD43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C66990FD-C27A-4DA7-A5B4-5A28C232E7D1} = {49BC0FD8-CFA9-4481-8F5C-26113BF16542}
+		{4BFF0638-66E4-4F57-B76C-4D10BCE5FD43} = {49BC0FD8-CFA9-4481-8F5C-26113BF16542}
+	EndGlobalSection
+EndGlobal
