@@ -18,7 +18,7 @@ var refresh = require('gulp-livereload'),
 
 // Clean task
 gulp.task('clean', function () {
-    gulp.src('./dist/views', { read: false }) // much faster
+    gulp.src('./wwwroot/views', { read: false }) // much faster
         .pipe(rimraf({ force: true }));
 });
 
@@ -62,7 +62,7 @@ gulp.task('views', function () {
         .pipe(gulp.dest('wwwroot/'));
 
     // Any other view files from app/views
-    gulp.src('./app/views/**/*')
+    gulp.src('./app/scripts/components/*.html')
         // Will be put in the wwwroot/views folder
         .pipe(gulp.dest('wwwroot/views/'));
 });
@@ -77,7 +77,7 @@ gulp.task('watch', ['jshint'], function () {
       'browserify'
     ]);
 
-    gulp.watch(['./app/index.html', './app/views/**/*.html'], [
+    gulp.watch(['./app/index.html', './app/scripts/components/*.html'], [
       'views'
     ]);
 

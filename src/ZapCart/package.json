@@ -12,8 +12,10 @@
     "gulp-rimraf": "0.1.1",
     "gulp-less": "3.0.3",
     "gulp-autoprefixer": "2.3.0",
-    "angular": "1.4.0",
     "browserify": "10.2.1",
-    "connect-livereload": "0.5.3"
+    "connect-livereload": "0.5.3",
+    "angular": "1.4.0",
+    "angular-route": "1.4.0",
+    "angular-resource": "1.4.0"
   }
 }

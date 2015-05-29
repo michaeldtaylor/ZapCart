@@ -1,13 +1,19 @@
 ﻿<!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="zapCartApp">
 <head>
-    <title>ZapCart</title>
+    <title>ZapCart - Really naive shopping cart!</title>
     <link rel="stylesheet" type="text/css" href="/styles/app.css">
+    <base href="/">
 </head>
-<body ng-controller='WelcomeCtrl'>
-    <h1>ZapCart</h1>
+<body ng-cloak>
+    <h1>ZapCart - Really naive shopping cart!</h1>
 
-    <p>{{testVar}}</p>
+    <ul class="menu">
+        <li><a href="/">Products</a></li>
+        <li><a href="/cart">Cart</a></li>
+    </ul>
+
+    <div ng-view></div>
 
     <script src="/scripts/bundle.js"></script>
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
