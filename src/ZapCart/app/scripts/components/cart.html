@@ -1,3 +1,17 @@
-﻿<div>
-    Some cart stuff goes in here 
+﻿<h2>Cart</h2>
+
+<div ng-controller='cartController'>
+    <ul>
+        <li ng-repeat="cartItem in cartItems">
+            <span>{{cartItem.productResource.name}}</span>
+            <p>{{cartItem.productResource.description}}</p>
+            <p>{{cartItem.quantity}}</p>
+            <button ng-click="incrementQuantity(cartItem.productResource)">+</button>
+            <button ng-click="decrementQuantity(cartItem.productResource)">-</button>
+            <p>{{cartItem.totalCost | currency}}</p>
+            <button ng-click="removeFromCart(cartItem.productResource)">Remove from Cart</button>
+        </li>
+    </ul>
+
+    <h2>Total cost: {{totalCost | currency}}</h2>
 </div>

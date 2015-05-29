@@ -18,7 +18,7 @@ var refresh = require('gulp-livereload'),
 
 // Clean task
 gulp.task('clean', function () {
-    gulp.src('./wwwroot/views', { read: false }) // much faster
+    gulp.src('./wwwroot/views/', { read: false }) // much faster
         .pipe(rimraf({ force: true }));
 });
 

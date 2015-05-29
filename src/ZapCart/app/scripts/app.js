@@ -6,9 +6,11 @@ require('angular-resource');
 
 // Controllers
 var productListController = require('./components/productListController');
+var cartController = require('./components/cartController');
 
 // Services
-var productDataSource = require('./services/productDataSource');
+var productResource = require('./services/productResource');
+var cart = require('./services/cart');
 
 var app = angular.module('zapCartApp', ['ngRoute', 'ngResource']);
 
@@ -22,7 +24,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 }]);
 
 // Create factories
-app.factory('productDataSource', ['$resource', productDataSource]);
+app.factory('productResource', ['$resource', productResource]);
+app.factory('cart', cart);
 
 // Create controllers
-app.controller('productListController', ['$scope', 'productDataSource', productListController]);
+app.controller('productListController', ['$scope', 'productResource', 'cart', productListController]);
+app.controller('cartController', ['$scope', 'cart', cartController]);

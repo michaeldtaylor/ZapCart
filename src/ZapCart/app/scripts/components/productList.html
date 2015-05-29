@@ -1,8 +1,10 @@
 ﻿<div ng-controller='productListController'>
     <ul>
-        <li ng-repeat="product in products">
-            <span>{{product.name}}</span>
-            <p>{{product.description}}</p>
+        <li ng-repeat="productResource in products">
+            <span>{{productResource.name}}</span>
+            <p>{{productResource.description}}</p>
+            <p>{{productResource.price | currency}}</p>
+            <button ng-click="addToCart(productResource)">Add to Cart</button>
         </li>
     </ul>
 </div>
