@@ -1,6 +1,7 @@
 ﻿'use strict';
 
 var angular = require('angular');
+require('ngstorage');
 
 // Controllers
 var appController = require('./components/appController');
@@ -16,7 +17,8 @@ var app = angular.module('zapCartApp', [
     require('angular-resource'),
     require('angular-aria'),
     require('angular-animate'),
-    require('angular-material')
+    require('angular-material'),
+    'ngStorage'
 ]);
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -30,9 +32,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 
 // Create services/factories
 app.factory('productResource', ['$resource', productResource]);
-app.factory('cart', cart);
+app.factory('cart', ['$localStorage', cart]);
 
 // Create controllers
-app.controller('appController', ['$scope', '$mdSidenav', appController]);
+app.controller('appController', ['$rootScope', '$mdSidenav', appController]);
 app.controller('productListController', ['$scope', 'productResource', 'cart', productListController]);
 app.controller('cartController', ['$scope', 'cart', cartController]);

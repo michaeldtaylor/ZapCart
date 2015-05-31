@@ -1,11 +1,11 @@
 'use strict';
 
-var appController = function ($scope, $mdSidenav) {
+var appController = function ($rootScope, $mdSidenav) {
     function toggleSidenav(name) {
         $mdSidenav(name).toggle();
     }
 
-    $scope.toggleSidenav = toggleSidenav;
+    $rootScope.toggleSidenav = toggleSidenav;
 };
 
 module.exports = appController;

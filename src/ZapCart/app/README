@@ -1,0 +1,13 @@
+﻿ZapCart - Material shopping cart
+================================
+
+A little AngularJS app to understand some of the concepts better and get a feel for Browserify and Gulp too.
+
+Scope
+	- Prototypical inheritence
+	- The purpose of the scope if to refer to the model not to be the model
+	- The model is your JavaScript objects
+	- Treat scope as read-only in templates
+	- Treat scope as write-only in controllers
+	- When doing bidirectional binding (ng-model) make sure you don't bind directly to the scope properties:
+	- ng-model - always have a dot!

@@ -2,21 +2,41 @@
 
 var _ = require('underscore');
 
-var cart = function () {
+var cart = function ($localStorage) {
     var cartItems = {};
 
+    if ($localStorage.cartItems) {
+        _.each($localStorage.cartItems, function (cartItem) {
+            cartItems[cartItem.productResource.id] = cartItem;
+        });
+    }
+
+    var save = function () {
+        $localStorage.cartItems = cartItems;
+    };
+
     var changeQuantity = function (productResource, newQuantity) {
-        cartItems[productResource.id] = { productResource: productResource, quantity: newQuantity, totalCost: productResource.price * newQuantity };
+        cartItems[productResource.id] = {
+            productResource: productResource,
+            quantity: newQuantity,
+            totalCost: productResource.price * newQuantity
+        };
+
+        save();
     };
 
     var removeItem = function (productResource) {
         if (cartItems[productResource.id] !== undefined) {
             delete cartItems[productResource.id];
         }
+
+        save();
     };
 
     return {
-        cartItems: cartItems,
+        getAllItems: function () {
+            return cartItems;
+        },
 
         incrementQuantity: function (productResource) {
             var existingQuantity = 0;

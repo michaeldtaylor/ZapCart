@@ -10,8 +10,9 @@ namespace ZapCart.WebApi.Controllers
     {
         private static readonly IDictionary<int, Product> Products = new Dictionary<int, Product>
         {
-            { 1, new Product(1, "Apple iPhone 6", "It's an iPhone", 500m) },
-            { 2, new Product(2, "Google Nexus 5", "It's an Android", 250m) }
+            { 1, new Product(1, "Apple iPhone 6", "Latest iPhone", 500m, new List<string> { "Hardware", "Phones" }) },
+            { 2, new Product(2, "Google Nexus 5", "Latest Android", 250m, new List<string> { "Hardware", "Phones" }) },
+            { 3, new Product(3, "Oculus Rift", "VR Googles", 300m, new List<string> { "Hardware", "VR", "Gaming" }) }
         };
 
         // GET: api/values
