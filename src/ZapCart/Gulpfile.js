@@ -30,16 +30,6 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('default'));
 });
 
-// Styles task
-gulp.task('styles', function () {
-    gulp.src('app/styles/*.less')
-        // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
-        .pipe(less({ onError: function (e) { console.log(e); } }))
-        // Optionally add autoprefixer
-        .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
-        .pipe(gulp.dest('wwwroot/styles/'));
-});
-
 // Browserify task
 gulp.task('browserify', function () {
     // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
@@ -52,6 +42,21 @@ gulp.task('browserify', function () {
         .pipe(concat('bundle.js'))
         // Output it to our wwwroot folder
         .pipe(gulp.dest('wwwroot/scripts'));
+});
+
+// Styles task
+gulp.task('styles', function () {
+    gulp.src('./app/styles/*.less')
+        // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
+        .pipe(less({ onError: function (e) { console.log(e); } }))
+        // Optionally add autoprefixer
+        .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
+        .pipe(gulp.dest('wwwroot/styles/'));
+
+    // Any other view files from app/views
+    gulp.src('./node_modules/angular-material/angular-material.css')
+        // Will be put in the wwwroot/views folder
+        .pipe(gulp.dest('wwwroot/styles/'));
 });
 
 // Views task
@@ -79,6 +84,10 @@ gulp.task('watch', ['jshint'], function () {
 
     gulp.watch(['./app/index.html', './app/scripts/components/*.html'], [
       'views'
+    ]);
+
+    gulp.watch(['./app/styles/*.less'], [
+      'styles'
     ]);
 
     gulp.watch('./wwwroot/**').on('change', refresh.changed);

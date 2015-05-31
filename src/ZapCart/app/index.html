@@ -1,19 +1,43 @@
 ﻿<!doctype html>
 <html lang="en" ng-app="zapCartApp">
 <head>
-    <title>ZapCart - Really naive shopping cart!</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ZapCart - Material shopping cart</title>
+    <link rel="stylesheet" type="text/css" href="/styles/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/styles/app.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <base href="/">
 </head>
-<body ng-cloak>
-    <h1>ZapCart - Really naive shopping cart!</h1>
+<body layout="column" ng-cloak ng-controller="appController">
+    <md-toolbar layout="row">
+        <button ng-click="toggleSidenav('left')" class="menuBtn">
+            <span class="md-visually-hidden">Menu</span>
+        </button>
+        <h1 class="md-toolbar-tools" layout-align-gt-sm="center">ZapCart - Material shopping cart</h1>
+    </md-toolbar>
 
-    <ul class="menu">
-        <li><a href="/">Products</a></li>
-        <li><a href="/cart">Cart</a></li>
-    </ul>
+    <div layout="row" flex class="content-wrapper">
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+            <md-list>
+                <md-item>
+                    <md-item-content>
+                        <a href="/">Products</a>
+                    </md-item-content>
+                </md-item>
+                <md-item>
+                    <md-item-content>
+                        <a href="/cart">Cart</a>
+                    </md-item-content>
+                </md-item>
+            </md-list>
+        </md-sidenav>
 
-    <div ng-view></div>
+        <div layout="column" flex class="content-wrapper" id="primary-col">
+            <md-content layout="column" flex class="md-padding">
+                <div ng-view></div>
+            </md-content>
+        </div>
+    </div>
 
     <script src="/scripts/bundle.js"></script>
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>

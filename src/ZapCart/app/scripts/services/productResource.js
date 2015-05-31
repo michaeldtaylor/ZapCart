@@ -1,7 +1,7 @@
 'use strict';
 
 var productResource = function ($resource) {
-    return $resource('api/products/', {}, {
+    return $resource('http://localhost:5001/api/products/', {}, {
         query: { method: 'GET', params: {}, isArray: true }
     });
 };

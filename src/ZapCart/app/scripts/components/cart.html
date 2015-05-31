@@ -12,6 +12,7 @@
             <button ng-click="removeFromCart(cartItem.productResource)">Remove from Cart</button>
         </li>
     </ul>
+    <p ng-if="totalCost === 0">No items in cart</p>
 
     <h2>Total cost: {{totalCost | currency}}</h2>
 </div>

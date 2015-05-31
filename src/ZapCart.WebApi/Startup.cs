@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Cors.Core;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
@@ -24,6 +25,18 @@ namespace ZapCart.WebApi
                     jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 }
             });
+
+            services.AddCors();
+
+            var policy = new CorsPolicy();
+
+            policy.Headers.Add("*");
+            policy.Methods.Add("*");
+            policy.Origins.Add("*");
+            policy.SupportsCredentials = true;
+
+            services.ConfigureCors(x => x.AddPolicy("mypolicy", policy));
+
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();
@@ -34,6 +47,15 @@ namespace ZapCart.WebApi
         {
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
+
+            //app.UseCors(policy => policy.WithOrigins("http://example.com"));
+
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+                context.Response.Headers.Add("Access-Control-Allow-Headers", new[] { "Content-Type, x-xsrf-token" });
+                await next();
+            });
 
             // Add MVC to the request pipeline.
             app.UseMvc();
