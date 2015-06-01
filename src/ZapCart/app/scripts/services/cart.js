@@ -7,27 +7,27 @@ var cart = function ($localStorage) {
 
     if ($localStorage.cartItems) {
         _.each($localStorage.cartItems, function (cartItem) {
-            cartItems[cartItem.productResource.id] = cartItem;
+            cartItems[cartItem.product.id] = cartItem;
         });
     }
 
-    var save = function () {
+    function save() {
         $localStorage.cartItems = cartItems;
     };
 
-    var changeQuantity = function (productResource, newQuantity) {
-        cartItems[productResource.id] = {
-            productResource: productResource,
+    function changeQuantity(product, newQuantity) {
+        cartItems[product.id] = {
+            product: product,
             quantity: newQuantity,
-            totalCost: productResource.price * newQuantity
+            totalCost: product.price * newQuantity
         };
 
         save();
     };
 
-    var removeItem = function (productResource) {
-        if (cartItems[productResource.id] !== undefined) {
-            delete cartItems[productResource.id];
+    var removeItem = function (product) {
+        if (cartItems[product.id] !== undefined) {
+            delete cartItems[product.id];
         }
 
         save();
@@ -38,22 +38,22 @@ var cart = function ($localStorage) {
             return cartItems;
         },
 
-        incrementQuantity: function (productResource) {
+        incrementQuantity: function (product) {
             var existingQuantity = 0;
 
-            if (cartItems[productResource.id] !== undefined) {
-                existingQuantity = cartItems[productResource.id].quantity;
+            if (cartItems[product.id] !== undefined) {
+                existingQuantity = cartItems[product.id].quantity;
             }
 
-            changeQuantity(productResource, existingQuantity + 1);
+            changeQuantity(product, existingQuantity + 1);
         },
 
-        decrementQuantity: function (productResource) {
-            if (cartItems[productResource.id] !== undefined) {
-                if (cartItems[productResource.id].quantity > 1) {
-                    changeQuantity(productResource, cartItems[productResource.id].quantity - 1);
+        decrementQuantity: function (product) {
+            if (cartItems[product.id] !== undefined) {
+                if (cartItems[product.id].quantity > 1) {
+                    changeQuantity(product, cartItems[product.id].quantity - 1);
                 } else {
-                    removeItem(productResource);
+                    removeItem(product);
                 }
             }
         },

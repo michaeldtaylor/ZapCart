@@ -40,7 +40,6 @@ gulp.task('browserify', function () {
         }))
         // Bundle to a single file
         .pipe(concat('bundle.js'))
-        // Output it to our wwwroot folder
         .pipe(gulp.dest('wwwroot/scripts'));
 });
 
@@ -53,23 +52,38 @@ gulp.task('styles', function () {
         .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
         .pipe(gulp.dest('wwwroot/styles/'));
 
-    // Any other view files from app/views
+    // This is a hack
     gulp.src('./node_modules/angular-material/angular-material.css')
-        // Will be put in the wwwroot/views folder
         .pipe(gulp.dest('wwwroot/styles/'));
+
+    gulp.src('./app/styles/images/**/')
+        .pipe(gulp.dest('wwwroot/styles/images/'));
+
+    //gulp.src('./node_modules/material-design-icons/action/svg/production')
+    //    .pipe(gulp.dest('wwwroot/styles/material-design/icons/'));
+
+    // Any other view files from app/images
+    gulp.src('./app/images/*.*')
+        .pipe(gulp.dest('wwwroot/images/'));
 });
 
 // Views task
 gulp.task('views', function () {
     // Get our index.html
     gulp.src('./app/index.html')
-        // And put it in the wwwroot folder
         .pipe(gulp.dest('wwwroot/'));
 
-    // Any other view files from app/views
-    gulp.src('./app/scripts/components/*.html')
-        // Will be put in the wwwroot/views folder
+    gulp.src('./app/views/*.html')
         .pipe(gulp.dest('wwwroot/views/'));
+
+    gulp.src('./app/scripts/components/*.html')
+        .pipe(gulp.dest('wwwroot/views/'));
+});
+
+// Config task
+gulp.task('config', function () {
+    gulp.src('./app/config/*.*')
+        .pipe(gulp.dest('wwwroot/'));
 });
 
 gulp.task('watch', ['jshint'], function () {
@@ -86,14 +100,18 @@ gulp.task('watch', ['jshint'], function () {
       'views'
     ]);
 
-    gulp.watch(['./app/styles/*.less'], [
+    gulp.watch(['./app/styles/*.less', './app/images/*.*'], [
       'styles'
+    ]);
+
+    gulp.watch(['./app/config/*.*'], [
+      'config'
     ]);
 
     gulp.watch('./wwwroot/**').on('change', refresh.changed);
 });
 
 // Dev task
-gulp.task('dev', ['clean', 'views', 'styles', 'jshint', 'browserify'], function () { });
+gulp.task('dev', ['clean', 'styles', 'views', 'config', 'jshint', 'browserify'], function () { });
 
 gulp.task('default', ['dev', 'watch']);

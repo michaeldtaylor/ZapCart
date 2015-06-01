@@ -1,10 +1,22 @@
 ﻿<div ng-controller='productListController'>
-    <ul>
-        <li ng-repeat="productResource in products">
-            <span>{{productResource.name}}</span>
-            <p>{{productResource.description}}</p>
-            <p>{{productResource.price | currency}}</p>
-            <button ng-click="addToCart(productResource)">Add to Cart</button>
-        </li>
-    </ul>
+    <md-content>
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="product in products">
+                <img ng-src="images/avatar.jpg" alt="{{product.description}}" class="md-avatar">
+                <div flex class="md-list-item-text">
+                    <h3>{{product.name}}</h3>
+                    <h4>{{product.description}}</h4>
+                    <p>
+                        {{product.price | currency}}
+                    </p>
+                </div>
+
+                <md-button class="md-icon-button" aria-label="Add to Cart" ng-click="addToCart(product)">
+                    <md-icon md-svg-icon="content:add_box"></md-icon>
+                </md-button>
+
+                <md-divider inset></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-content>
 </div>

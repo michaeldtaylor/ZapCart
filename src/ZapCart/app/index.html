@@ -1,19 +1,27 @@
 ﻿<!doctype html>
 <html lang="en" ng-app="zapCartApp">
 <head>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1" />
     <title>ZapCart - Material shopping cart</title>
     <link rel="stylesheet" type="text/css" href="/styles/angular-material.css">
     <link rel="stylesheet" type="text/css" href="/styles/app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <base href="/">
 </head>
-<body layout="column" ng-cloak ng-controller="appController">
+<body layout="column" ng-controller="appController">
     <md-toolbar layout="row">
-        <button ng-click="toggleSidenav('left')" class="menuBtn">
-            <span class="md-visually-hidden">Menu</span>
-        </button>
-        <h1 class="md-toolbar-tools" layout-align-gt-sm="center">ZapCart - Material shopping cart</h1>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="toggleSidenav('left')" aria-label="Menu">
+                <md-icon md-svg-icon="navigation:menu"></md-icon>
+            </md-button>
+            <h2>
+                <span>ZapCart</span>
+            </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="navigation:more_vert"></md-icon>
+            </md-button>
+        </div>
     </md-toolbar>
 
     <div layout="row" flex class="content-wrapper">
@@ -34,7 +42,11 @@
 
         <div layout="column" flex class="content-wrapper" id="primary-col">
             <md-content layout="column" flex class="md-padding">
-                <div ng-view></div>
+                <md-tabs md-stretch-tabs md-dynamic-height md-border-bottom md-selected="selectedTabIndex">
+                    <md-tab ng-repeat="tab in tabs" md-on-select="switchTab($index)" label="{{tab.label}}">
+                        <div ng-view></div>
+                    </md-tab>
+                </md-tabs>
             </md-content>
         </div>
     </div>

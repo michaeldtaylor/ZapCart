@@ -1,12 +1,22 @@
-﻿<ul>
-    <li ng-repeat="cartItem in cartItems">
-        <span>{{cartItem.productResource.name}}</span>
-        <p>{{cartItem.productResource.description}}</p>
-        <p>{{cartItem.quantity}}</p>
-        <button ng-click="incrementQuantity(cartItem.productResource)">+</button>
-        <button ng-click="decrementQuantity(cartItem.productResource)">-</button>
-        <p>{{cartItem.totalCost | currency}}</p>
-        <button ng-click="removeFromCart(cartItem.productResource)">Remove from Cart</button>
-    </li>
-</ul>
+﻿<md-list>
+    <md-list-item class="md-3-line" ng-repeat="cartItem in cartItems">
+        <img ng-src="images/avatar.jpg" alt="{{cartItem.product.description}}" class="md-avatar">
+        <div flex layout="row" class="md-list-item-text">
+            <div flex>
+                <h3>{{cartItem.product.name}}</h3>
+                <h4>{{cartItem.product.description}}</h4>
+                <p>Cost: {{cartItem.totalCost | currency}}</p>
+            </div>
+            <div flex>
+                <h4>Quantity: {{cartItem.quantity}}</h4>
+                <md-button class="md-raised" ng-click="incrementQuantity(cartItem.product)">+</md-button>
+                <md-button class="md-raised" ng-click="decrementQuantity(cartItem.product)">-</md-button>
+            </div>
+            <div flex>
+                <md-button class="md-raised" ng-click="removeFromCart(cartItem.product)">Remove from Cart</md-button>
+            </div>
+        </div>
+    </md-list-item>
+</md-list>
+
 <p ng-if="totalCost === 0">No items in cart</p>

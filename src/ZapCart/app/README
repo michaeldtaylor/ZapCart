@@ -11,3 +11,7 @@ Scope
 	- Treat scope as write-only in controllers
 	- When doing bidirectional binding (ng-model) make sure you don't bind directly to the scope properties:
 	- ng-model - always have a dot!
+
+Material Icons
+	- Icon sets: https://github.com/nkoterba/material-design-iconsets
+	- Guide: https://klarsys.github.io/angular-material-icons/

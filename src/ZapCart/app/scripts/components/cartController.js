@@ -1,6 +1,6 @@
 'use strict';
 
-var cartController = function ($scope, cart) {
+var cartController = function ($scope, $mdToast, cart) {
     $scope.cartItems = cart.getAllItems();
     $scope.totalCost = cart.totalCost();
 
@@ -12,16 +12,22 @@ var cartController = function ($scope, cart) {
     });
 
     // These should be directives according to: http://kirkbushell.me/when-to-use-directives-controllers-or-services-in-angular/
-    $scope.incrementQuantity = function (productResource) {
-        cart.incrementQuantity(productResource);
+    $scope.incrementQuantity = function (product) {
+        cart.incrementQuantity(product);
     }
 
-    $scope.decrementQuantity = function (productResource) {
-        cart.decrementQuantity(productResource);
+    $scope.decrementQuantity = function (product) {
+        cart.decrementQuantity(product);
     }
 
-    $scope.removeFromCart = function (productResource) {
-        cart.removeItem(productResource);
+    $scope.removeFromCart = function (product) {
+        cart.removeItem(product);
+
+        $mdToast.show(
+          $mdToast.simple()
+            .content('Removed ' + product.name + ' from your cart!')
+            .hideDelay(1000)
+        );
     }
 };
 
