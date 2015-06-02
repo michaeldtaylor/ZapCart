@@ -1,9 +1,9 @@
 'use strict';
 
-var productSearchController = function ($scope, $timeout, $q, $log, productResource) {
+var productSearchController = function ($scope, $timeout, $q, $log, ProductRepository) {
     var self = this;
     
-    //$scope.products = productResource.query();
+    //$scope.products = ProductRepository.query();
     
     self.simulateQuery = false;
     self.isDisabled    = false;

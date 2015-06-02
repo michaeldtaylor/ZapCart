@@ -12,6 +12,13 @@ Scope
 	- When doing bidirectional binding (ng-model) make sure you don't bind directly to the scope properties:
 	- ng-model - always have a dot!
 
+Factories vs. Services
+	Simplest first:
+
+	- Service: Register a service constructor, which will be invoked with new to create the service instance
+	- Factory: Register a service factory, which will be called to return the service instance.
+	- Provider: Provider style, full blown, configurable version
+
 Material Icons
 	- Icon sets: https://github.com/nkoterba/material-design-iconsets
-	- Guide: https://klarsys.github.io/angular-material-icons/
+	- Icon guide: https://klarsys.github.io/angular-material-icons/

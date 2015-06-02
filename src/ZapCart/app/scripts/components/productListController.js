@@ -1,7 +1,7 @@
 'use strict';
 
-var productListController = function ($scope, $mdDialog, $mdToast, productResource, cart) {
-    $scope.products = productResource.query();
+var productListController = function ($scope, $mdDialog, $mdToast, productRepository, cart) {
+    $scope.products = productRepository.query();
     
     //$scope.addToCart = function (product, event) {
     //    $mdDialog.show(

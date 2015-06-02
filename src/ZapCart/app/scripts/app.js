@@ -10,8 +10,12 @@ var productSearchController = require('./components/productSearchController');
 var cartController = require('./components/cartController');
 
 // Services
-var productResource = require('./services/productResource');
-var cart = require('./services/cart');
+var modelTransformer = require('./services/modelTransformer');
+var ProductRepository = require('./services/productRepository');
+var Cart = require('./services/cart');
+
+// Models
+var Product = require('./models/product');
 
 var app = angular.module('zapCartApp', [
     require('angular-route'),
@@ -51,11 +55,13 @@ app.config(['$routeProvider', '$locationProvider', '$mdIconProvider', function (
 }]);
 
 // Create services/factories
-app.factory('productResource', ['$resource', productResource]);
-app.factory('cart', ['$localStorage', cart]);
+app.factory('modelTransformer', modelTransformer);
+//app.factory('Product', Product);
+app.factory('ProductRepository', ['$resource', 'modelTransformer', ProductRepository]);
+app.factory('Cart', ['$localStorage', Cart]);
 
 // Create controllers
 app.controller('appController', ['$rootScope', '$location', '$mdSidenav', appController]);
-app.controller('productSearchController', ['$scope', '$timeout', '$q', '$log', 'productResource', productSearchController]);
-app.controller('productListController', ['$scope', '$mdDialog', '$mdToast', 'productResource', 'cart', productListController]);
-app.controller('cartController', ['$scope', '$mdToast', 'cart', cartController]);
+app.controller('productSearchController', ['$scope', '$timeout', '$q', '$log', 'ProductRepository', productSearchController]);
+app.controller('productListController', ['$scope', '$mdDialog', '$mdToast', 'ProductRepository', 'Cart', productListController]);
+app.controller('cartController', ['$scope', '$mdToast', 'Cart', cartController]);

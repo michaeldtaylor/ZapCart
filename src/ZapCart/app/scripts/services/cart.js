@@ -2,7 +2,7 @@
 
 var _ = require('underscore');
 
-var cart = function ($localStorage) {
+var Cart = function ($localStorage) {
     var cartItems = {};
 
     if ($localStorage.cartItems) {
@@ -25,7 +25,7 @@ var cart = function ($localStorage) {
         save();
     };
 
-    var removeItem = function (product) {
+    function removeItem(product) {
         if (cartItems[product.id] !== undefined) {
             delete cartItems[product.id];
         }
@@ -68,4 +68,4 @@ var cart = function ($localStorage) {
     };
 };
 
-module.exports = cart;
+module.exports = Cart;

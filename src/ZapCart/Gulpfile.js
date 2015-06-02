@@ -40,7 +40,7 @@ gulp.task('browserify', function () {
         }))
         // Bundle to a single file
         .pipe(concat('bundle.js'))
-        .pipe(gulp.dest('wwwroot/scripts'));
+        .pipe(gulp.dest('wwwroot/scripts/'));
 });
 
 // Styles task
@@ -82,7 +82,7 @@ gulp.task('views', function () {
 
 // Config task
 gulp.task('config', function () {
-    gulp.src('./app/config/*.*')
+    gulp.src('./config/*.*')
         .pipe(gulp.dest('wwwroot/'));
 });
 
